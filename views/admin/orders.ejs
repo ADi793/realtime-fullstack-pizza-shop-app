@@ -1,0 +1,56 @@
+<% if (orders.length === 0) { %>
+<div class="empty-orders-section">
+  <h2>Not Found Any Orders.</h2>
+</div>
+<% } else { %>
+<section class="orders-section">
+  <h2>All Orders</h2>
+  <div class="admin-orders-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Orders</th>
+          <th>Customer</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Placed At</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(order => { %>
+        <tr>
+          <td>
+            <div class="order-desc">
+              <h3><%= order._id %></h3>
+              <% for (let item of Object.values(order.pizzas)) { %>
+              <h5><%= item.pizza.name %> - <%= item.quantity %> pcs</h5>
+              <% } %>
+            </div>
+          </td>
+          <td><%= order.customerId.name %></td>
+          <td><%= order.address %></td>
+          <td>
+            <select
+              data-orderId="<%= order._id %>"
+              name="statuses-select"
+              id="statuses-select"
+              class="statuses-select"
+            >
+              <% for (let option of options) { %> <% if (order.orderStatus ===
+              option) { %>
+              <option selected value="<%= option %>"><%= option %></option>
+              <% } else { %>
+              <option value="<%= option %>"><%= option %></option>
+              <% } %> <% } %>
+            </select>
+          </td>
+          <td><%= moment(order.createdAt).format('hh:mm A') %></td>
+          <td><%= order.paymentStatus ? 'paid' : 'Not paid' %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<% } %>

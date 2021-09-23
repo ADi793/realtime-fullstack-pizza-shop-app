@@ -1,0 +1,56 @@
+<% if (!session.cart) { %>
+<section class="empty-cart">
+  <h2>Cart Empty 😕</h2>
+  <p>
+    You probably haven't ordered a pizza yet. <br />
+    To order a pizza, go to the main page.
+  </p>
+  <div class="empty-cart-img">
+    <img src="../../images/empty-cart.png" alt="" />
+  </div>
+  <a href="/">Go back</a>
+</section>
+<% } else { %>
+<section class="cart">
+  <header>
+    <img src="../../images/cart-black.png" alt="" />
+    <h2>Order summary</h2>
+  </header>
+  <div class="cart-items">
+    <% for (const item of Object.values(session.cart.pizzas)) { %>
+    <div class="cart-item">
+      <div class="cart-item-img">
+        <img src="../../images/<%= item.pizza.image %>" alt="" />
+      </div>
+      <div class="cart-item-desc">
+        <h3><%= item.pizza.name %></h3>
+        <span><%= item.pizza.size %></span>
+        <span><%= item.quantity %> Pcs</span>
+        <span>₹ <%= item.pizza.price %></span>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <div class="order-form">
+    <h3>Total Amount: ₹ <%= session.cart.totalPrice %></h3>
+    <h5><%= messages.error %></h5>
+    <form action="/orders" method="POST">
+      <input
+        type="text"
+        name="phone"
+        id="phone"
+        value="<%= messages.phone %>"
+        placeholder="Enter your number..."
+      />
+      <input
+        type="text"
+        name="address"
+        id="address"
+        value="<%= messages.address %>"
+        placeholder="Enter your address..."
+      />
+      <button type="submit">Order Now</button>
+    </form>
+  </div>
+</section>
+<% } %>

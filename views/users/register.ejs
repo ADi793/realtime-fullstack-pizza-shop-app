@@ -1,0 +1,28 @@
+<section class="register-section">
+  <div class="form-wrapper">
+    <header>
+      <h2>Register</h2>
+    </header>
+    <h5><%= messages.error %></h5>
+    <form action="/users/register" method="POST">
+      <div class="name-input">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= messages.name %>" />
+      </div>
+      <div class="email-input">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="<%= messages.email %>"
+        />
+      </div>
+      <div class="password-input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</section>

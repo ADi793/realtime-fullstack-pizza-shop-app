@@ -1,0 +1,32 @@
+<% if (orders.length === 0) { %>
+<div class="empty-orders-section">
+  <h2>Not Found Any Orders.</h2>
+  <a href="/">Order Now</a>
+</div>
+<% } else { %>
+<section class="orders-section">
+  <h2>Your Orders</h2>
+  <div class="orders-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Orders</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(order => { %>
+        <tr>
+          <td><a href="/users/orders/<%= order._id %>"><%= order._id %></a></td>
+          <td><%= order.phone %></td>
+          <td><%= order.address %></td>
+          <td><%= moment(order.createdAt).format('hh:mm A'); %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<% } %>

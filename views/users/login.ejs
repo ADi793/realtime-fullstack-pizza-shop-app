@@ -1,0 +1,19 @@
+<section class="login-form">
+  <div class="form-wrapper">
+    <header>
+      <h2>Login</h2>
+    </header>
+    <h5><%= messages.error %></h5>
+    <form method="POST" action="/users/login">
+      <div class="email-input">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="password-input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</section>

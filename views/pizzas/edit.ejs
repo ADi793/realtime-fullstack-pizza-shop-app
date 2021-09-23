@@ -1,0 +1,35 @@
+<section class="pizza-form">
+  <div class="form-wrapper">
+    <header>
+      <h2>Pizza Form</h2>
+    </header>
+    <form
+      action="/pizzas/<%= pizza._id %>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="file-form">
+        <label for="avatar">Pizza</label>
+        <input type="file" name="avatar" id="avatar" />
+      </div>
+      <div class="name-form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= pizza.name %>" />
+      </div>
+      <div class="price-form">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          value="<%= pizza.price %>"
+        />
+      </div>
+      <div class="size-form">
+        <label for="size">Size</label>
+        <input type="text" name="size" id="size" value="<%= pizza.size %>" />
+      </div>
+      <button type="submit">Update Pizza</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Pizza | realtime app</title>
+  </head>
+  <body>
+    <header class="nav-head">
+      <nav>
+        <h1 id="logo">Pizzy</h1>
+        <input type="checkbox" class="menu-check" />
+        <ul class="nav-links">
+          <li><a href="/">Menu</a></li>
+          <% if (!user) { %>
+          <li><a href="/users/register">Register</a></li>
+          <li><a href="/users/login">Login</a></li>
+          <% } else { %> <% if (user && user.isAdmin) { %>
+          <li><a href="/pizzas">Pizzas</a></li>
+          <li><a href="/admin/orders">All Orders</a></li>
+          <% } %>
+          <li><a href="/users/orders">Orders</a></li>
+          <li><a href="/users/logout">Logout</a></li>
+          <% } %>
+          <li>
+            <div class="cart">
+              <span class="cart-items-no" style="color: white"
+                ><%= cartTotalQuantity %></span
+              >
+              <img src="/images/cart.png" alt="" />
+            </div>
+          </li>
+        </ul>
+        <div class="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+    <main><%- body %></main>
+    <footer>
+      <h5>Pizzy © 2021</h5>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.1/noty.min.css"
+      integrity="sha512-leQJisLD6lgz70MzHnVgZCwklwq2xcNB1+lIZIaw17o5vNJ7nBVK7w/TqCE5cKg4nDjiLcN/g2Lu0uA4rc5fAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.1/noty.min.js"
+      integrity="sha512-Wz8/IQIW2Hhz+0jQQdRlx8qTo7Qf286+yFGaW3nIQAynq7iOlmkhrKWQFOoLXOp7u5E2Tdda0dx9TyjhUD6jQg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

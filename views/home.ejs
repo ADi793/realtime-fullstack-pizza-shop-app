@@ -1,0 +1,28 @@
+<section class="hero">
+  <div class="hero-desc">
+    <h2>Are you hungry?</h2>
+    <h3>Don't wait</h3>
+    <a href="#">Order Now</a>
+  </div>
+  <div class="hero-img">
+    <img src="../images/pizza-4.png" alt="" />
+  </div>
+</section>
+<section class="menu-section">
+  <h2>All Pizzas</h2>
+  <div class="menu-cards">
+    <% pizzas.forEach(pizza => { %>
+    <div class="menu-card">
+      <div class="menu-card-icon">
+        <img src="../images/<%= pizza.image %>" alt="" />
+      </div>
+      <h4><%= pizza.name %></h4>
+      <span><%= pizza.size %></span>
+      <div class="price-cart-wrapper">
+        <span class="price">₹ <%= pizza.price %></span>
+        <button class="add-cart" data-pizzaId="<%= pizza._id %>">+ Add</button>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
