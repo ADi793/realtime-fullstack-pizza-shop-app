@@ -38,12 +38,12 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/realtime-pizza-app",
+      mongoUrl: process.env.DB,
       collectionName: "sessions",
     }),
   })
