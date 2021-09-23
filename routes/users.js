@@ -89,7 +89,12 @@ router.get("/orders", auth, async (req, res) => {
 router.get("/orders/:id", auth, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
-    res.render("users/order.ejs", { order });
+    res.render("users/order.ejs", {
+      order,
+      cartTotalQuantity: req.session.cart
+        ? req.session.cart.totalQuantity
+        : "0",
+    });
   } catch (ex) {
     // res.send("Order not found.");
     res.render("notFound", {
