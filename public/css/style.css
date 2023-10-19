@@ -27,6 +27,11 @@ h1 {
   font-family: "Great Vibes", cursive;
 }
 
+h1 a {
+  font-size: var(--header1);
+  font-family: "Great Vibes", cursive;
+}
+
 h2 {
   font-size: var(--header2);
 }
