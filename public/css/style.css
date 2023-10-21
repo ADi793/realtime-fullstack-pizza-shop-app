@@ -94,7 +94,7 @@ nav {
 }
 
 #logo {
-  flex: 1 1 40rem;
+  flex: 2 1 40rem;
 }
 
 #logo img {
@@ -125,6 +125,18 @@ nav .cart {
 .menu-check,
 .burger {
   display: none;
+}
+
+.user-info {
+  background: rgb(82, 82, 82);
+  color: white;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* hero section */

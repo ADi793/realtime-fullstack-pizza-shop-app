@@ -40,6 +40,10 @@
               <img src="/images/cart.png" alt="" />
             </div>
           </li>
+          <% if (user) { %>
+          <li class="user-info"><%= user.name.charAt(0).toUpperCase() %></li>
+
+          <% } %>
         </ul>
         <div class="burger">
           <span></span>
